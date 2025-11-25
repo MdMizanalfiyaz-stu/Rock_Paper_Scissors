@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      const Log = console.log;
+
+        
+      let humanScore = 0;
+      let computerScore = 0;
+
+      function getComputerChoice() {
+        let choice = Math.floor(Math.random() * 3);
+        switch (choice) {
+          case 0:
+            return "rock";
+          case 1:
+            return "paper";
+          case 2:
+            return "scissors";
+        }
+      }
+
+      function getHumanChoice(){
+        let choice = prompt("Enter a choice b|w: Rock|Paper|Scissors").toLowerCase();
+        // return choice;
+        if(choice==="rock"){
+            return 'rock';
+        }else if(choice==="paper"){
+            return 'paper';
+        }else if(choice==="scissors"){
+            return 'scissors';
+        }
+      }
+
+      function playRound(humanChoice,computerChoice){
+        console.log(`You entered: ${humanChoice}`);
+        console.log(`Computer entered: ${computerChoice}`);
+        
+        if((humanChoice==="rock"&&computerChoice==="scissors")||(humanChoice==="paper"&&computerChoice==="rock")||(humanChoice==="scissors"&&computerChoice==="paper")){
+          console.log(`You won! ${humanChoice} beats ${computerChoice}`);
+          humanScore++;
+        }else if(humanChoice===computerChoice){
+          console.log('It/s a tie! play again' );
+        }else{
+          console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+          computerScore++;
+        }
+
+        if(humanScore>computerScore){
+          console.log(`Human Score: ${humanScore}`);
+        }else if(computerScore>humanScore){
+          console.log(`Computer Score: ${computerScore}`);
+        }else{
+          return;
+        }
+      }
+      const humanChoice = getHumanChoice();
+      const computerChoice = getComputerChoice();
+      playRound(humanChoice,computerChoice);
+    // console.log(humanScore);
+    // console.log(computerScore);
+    
+      // console.log(getComputerChoice());
+      // console.log(getHumanChoice());
+    </script>
+  </body>
+</html>
