@@ -57,11 +57,12 @@ function playGame() {
     console.log("\n");
   }
 
-  playRound(getHumanChoice(), getComputerChoice());
-  playRound(getHumanChoice(), getComputerChoice());
-  playRound(getHumanChoice(), getComputerChoice());
-  playRound(getHumanChoice(), getComputerChoice());
-  playRound(getHumanChoice(), getComputerChoice());
+  for (let i = 1; i <= 5; i++) {
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+  }
+
 
   if (humanScore > computerScore) {
     console.log(
@@ -72,21 +73,7 @@ function playGame() {
       "***| Computer have the game based on results of the 5 rounds |***"
     );
   } else {
-    console.log("An additional round: ");
-    playRound(getHumanChoice(), getComputerChoice());
-    if (humanScore > computerScore) {
-      console.log(
-        "****| You have won the game based on results of the " +
-          (count - 1) +
-          " rounds |****"
-      );
-    } else {
-      console.log(
-        "****| Computer have won the game based on results of the " +
-          (count - 1) +
-          " rounds |****"
-      );
-    }
+    console.log("***| It's a tie |***");
   }
 }
 
